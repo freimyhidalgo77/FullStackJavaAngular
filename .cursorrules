@@ -1,0 +1,115 @@
+# Coding Guidelines for Reservation Backend Project
+
+## Overview
+This document outlines the coding standards and best practices for developing the Reservation Backend service using Spring Boot and Java 25. These rules are enforced by GitHub Copilot and must be followed in all code contributions.
+
+## General Rules
+- **Language**: All code must be written in English. This includes class names, method names, variable names, comments, and documentation.
+- **Java Version**: Use Java 25 features and best practices, including modern language constructs like records, sealed classes, pattern matching, and text blocks where appropriate.
+- **Documentation**: Every public method must have complete and up-to-date Javadoc documentation, including:
+  - Description of what the method does
+  - @param tags for all parameters
+  - @return tag for return values (if applicable)
+  - @throws tags for exceptions
+- **DTOs**: Use Java records for all Data Transfer Objects (DTOs) to ensure immutability and concise code.
+- **Naming Conventions**:
+  - Classes: PascalCase (e.g., ReservationController)
+  - Methods: camelCase (e.g., createReservation)
+  - Variables: camelCase (e.g., reservationId)
+  - Constants: UPPER_SNAKE_CASE (e.g., MAX_RESERVATIONS)
+- **Code Style**: Follow standard Java coding conventions with 4-space indentation, proper brace placement, and consistent formatting.
+
+## Project Structure
+The project follows a standard Spring Boot layered architecture:
+
+```
+reservation-backend/
+├── .cursorrules (this file)
+├── HELP.md
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/freimyhidalgo/reservation_backend/
+│   │   │       ├── ReservationSystemApplication.java
+│   │   │       ├── config/ (configuration classes)
+│   │   │       │   ├── SecurityConfig.java
+│   │   │       │   ├── DatabaseConfig.java
+│   │   │       │   └── ...
+│   │   │       ├── controller/ (REST controllers)
+│   │   │       │   ├── ReservationController.java
+│   │   │       │   ├── UserController.java
+│   │   │       │   └── ...
+│   │   │       ├── service/ (business logic services)
+│   │   │       │   ├── ReservationService.java
+│   │   │       │   ├── UserService.java
+│   │   │       │   └── ...
+│   │   │       ├── repository/ (data access layer)
+│   │   │       │   ├── ReservationRepository.java
+│   │   │       │   ├── UserRepository.java
+│   │   │       │   └── ...
+│   │   │       ├── model/ (domain models and DTOs)
+│   │   │       │   ├── entity/ (JPA entities)
+│   │   │       │   │   ├── Reservation.java
+│   │   │       │   │   ├── User.java
+│   │   │       │   │   └── ...
+│   │   │       │   ├── dto/ (data transfer objects - use records)
+│   │   │       │   │   ├── ReservationDTO.java
+│   │   │       │   │   ├── UserDTO.java
+│   │   │       │   │   └── ...
+│   │   │       │   └── ...
+│   │   │       └── exception/ (custom exceptions)
+│   │   │           ├── ReservationNotFoundException.java
+│   │   │           └── ...
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       ├── application-dev.properties
+│   │       ├── application-prod.properties
+│   │       ├── static/ (CSS, JS, images)
+│   │       └── templates/ (if using server-side rendering)
+│   └── test/
+│       ├── java/
+│       │   └── com/freimyhidalgo/reservation_backend/
+│       │       ├── ReservationSystemApplicationTests.java
+│       │       ├── controller/
+│       │       ├── service/
+│       │       ├── repository/
+│       │       └── ...
+│       └── resources/
+└── target/ (build output - generated)
+```
+
+## Spring Boot Best Practices
+- **Annotations**: Use appropriate Spring annotations (@RestController, @Service, @Repository, @Entity, etc.)
+- **Dependency Injection**: Prefer constructor injection over field injection
+- **Exception Handling**: Use @ControllerAdvice for global exception handling
+- **Validation**: Use Bean Validation annotations (@Valid, @NotNull, etc.) on DTOs
+- **Security**: Implement proper authentication and authorization using Spring Security
+- **Configuration**: Use application.properties for configuration, with profiles for different environments
+- **Logging**: Use SLF4J with proper log levels (DEBUG, INFO, WARN, ERROR)
+- **Testing**: Write unit tests for services, integration tests for controllers, and use Testcontainers for database testing
+
+## Java 25 Specific Practices
+- **Records**: Use records for immutable data classes, especially DTOs and simple value objects
+- **Sealed Classes**: Use sealed classes/interfaces for type hierarchies where appropriate
+- **Pattern Matching**: Use pattern matching in instanceof and switch expressions
+- **Text Blocks**: Use text blocks for multi-line strings (SQL, JSON, etc.)
+- **Virtual Threads**: Consider using virtual threads for I/O-bound operations (preview feature)
+- **Foreign Function & Memory API**: Use for native interop if needed (preview feature)
+
+## Code Quality
+- **SOLID Principles**: Follow Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles
+- **DRY (Don't Repeat Yourself)**: Avoid code duplication
+- **KISS (Keep It Simple, Stupid)**: Write simple, readable code
+- **Error Handling**: Handle exceptions appropriately, don't swallow them
+- **Performance**: Be mindful of performance implications, especially in database queries and loops
+- **Security**: Validate inputs, use parameterized queries, implement proper authentication
+
+## Git and Version Control
+- **Commits**: Write clear, concise commit messages in English
+- **Branching**: Use feature branches for development
+- **Pull Requests**: Provide detailed descriptions and link to issues
+
+These guidelines ensure consistent, maintainable, and high-quality code across the Reservation Backend project.
