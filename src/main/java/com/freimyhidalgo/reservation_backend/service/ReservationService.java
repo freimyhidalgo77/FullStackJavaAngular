@@ -1,6 +1,7 @@
 package com.freimyhidalgo.reservation_backend.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
@@ -39,10 +40,14 @@ public class ReservationService {
      * @return the created reservation
      * @throws ReservationAlreadyExistsException if a reservation already exists for the date and time
      */
+    @Transactional
     public Reservation createReservation(Reservation reservation) {
+        Objects.requireNonNull(reservation, "reservation must not be null");
         if (reservationRepository.existsByDateAndTime(reservation.getDate(), reservation.getTime())) {
             throw new ReservationAlreadyExistsException("A reservation already exists for the specified date and time.");
         }
+
+        reservation.setStatus(ReservationStatus.ACTIVe);
         return reservationRepository.save(reservation);
     }
 
