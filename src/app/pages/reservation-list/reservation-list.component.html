@@ -1,0 +1,54 @@
+<section class="reservation-page">
+  <header class="header">
+    <h2>Reservas</h2>
+  </header>
+
+  @if(isLoading()) {
+    <div class="status">Cargando reservas...</div>
+  }
+
+  @if(error()) {
+    <div class="status-error">{{error()}}</div>
+  }
+
+  @if(hasReservations()) {
+    <table class="reservations">
+      <thead>
+        <tr>
+          <th>Cliente</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Servicio</th>
+          <th>Estado</th>
+          <th aria-label="Acciones"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (reservation of reservations(); track reservation.id) {
+          <tr>
+            <td>{{ reservation.customerName }}</td>
+            <td>{{ reservation.date }}</td>
+            <td>{{ reservation.time }}</td>
+            <td>{{ reservation.service }}</td>
+            <td>{{ reservation.status }}</td>
+            <td>
+              <button
+                type="button"
+                class="cancel"
+                (click)="cancelReservation(reservation)"
+                [disabled]="reservation.status == 'CANCELLED'"
+              >
+                Cancelar
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+
+  @if (!isLoading() && !hasReservations() && !error()) {
+    <div class="empty">No hay reservas disponibles.</div>
+  }
+</section>
+

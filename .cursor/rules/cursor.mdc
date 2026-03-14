@@ -58,3 +58,20 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## Proposed Package Structure
+
+To distribute application elements into folders by type, organize the code under `src/app/` as follows:
+
+- `components/`: Reusable UI components
+- `services/`: Business logic and data access services
+- `models/`: Data models, interfaces, and types
+- `guards/`: Route guards for authentication and authorization
+- `interceptors/`: HTTP interceptors for requests and responses
+- `pipes/`: Custom pipes for data transformation
+- `directives/`: Custom directives for DOM manipulation
+- `pages/`: Page components associated with routes
+- `shared/`: Shared utilities, constants, and common code
+- `core/`: Core application services and singletons
+
+This structure promotes separation of concerns and maintainability.
