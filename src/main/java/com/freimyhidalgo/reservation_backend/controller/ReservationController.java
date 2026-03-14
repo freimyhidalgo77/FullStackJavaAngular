@@ -12,12 +12,17 @@ import java.util.List;
 /**
  * REST controller for managing reservations.
  */
+@CrossOrigin(origins = "http://localhost:4200") // allows CORS requests from Angular frontend
 @RestController
 @RequestMapping("/reservas")
-@RequiredArgsConstructor
+
 public class ReservationController {
 
     private final ReservationService reservationService;
+
+    public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 
     /**
      * GET /reservas - Lists all reservations.
