@@ -88,18 +88,30 @@
 button.cancel {
   background: transparent;
   border: 0.5px solid rgba(255,255,255,0.15);
-  color: #6b82a8;
+   background: #e74c3c; /* rojo */
   border-radius: 8px;
   padding: 6px 14px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.15s;
 }
+
+.cancel:hover {
+  background: #c0392b;
+}
+
 button.cancel:hover:not(:disabled) {
   background: rgba(216,90,48,0.12);
   border-color: #D85A30;
   color: #E0845A;
 }
+.cancel:disabled {
+  background: #5c2a2a;
+  color: #a88;
+  cursor: not-allowed;
+
+}
+
 button.cancel:focus {
   outline: 2px solid #4facfe;
   outline-offset: 2px;
@@ -125,3 +137,4 @@ button.cancel:focus {
 .btn-create:hover {
   background-color: #4338ca;
 }
+
