@@ -1,0 +1,25 @@
+/* styles.css — estilos globales */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background: #0a0f1e;
+  color: #e2ecff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* El root de Angular también debe cubrir todo */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #0a0f1e;
+}
