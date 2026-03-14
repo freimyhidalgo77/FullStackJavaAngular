@@ -39,7 +39,7 @@ export class ReservationFormComponent {
         date: this.reservationForm.value.date,
         time: `${this.reservationForm.value.time}:00`,
         service: this.reservationForm.value.service,
-       status: 'ACTIVe' as ReservationStatus
+       status: 'ACTIVE' as ReservationStatus
 
       };
 
