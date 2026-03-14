@@ -47,7 +47,7 @@ public class ReservationService {
             throw new ReservationAlreadyExistsException("A reservation already exists for the specified date and time.");
         }
 
-        reservation.setStatus(ReservationStatus.ACTIVe);
+        reservation.setStatus(ReservationStatus.ACTIVE);
         return reservationRepository.save(reservation);
     }
 
