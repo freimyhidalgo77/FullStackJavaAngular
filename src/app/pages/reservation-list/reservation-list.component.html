@@ -1,7 +1,15 @@
 <section class="reservation-page">
   <header class="header">
     <h2>Reservas</h2>
+      <button
+      type="button"
+      class="btn-create"
+      [routerLink]="['/create']"
+    >
+      + Crear Reserva
+    </button>
   </header>
+
 
   @if(isLoading()) {
     <div class="status">Cargando reservas...</div>
@@ -20,7 +28,7 @@
           <th>Hora</th>
           <th>Servicio</th>
           <th>Estado</th>
-          <th aria-label="Acciones"></th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>

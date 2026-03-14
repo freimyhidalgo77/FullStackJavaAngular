@@ -1,4 +1,5 @@
 import { Component, inject, OnInit, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { ReservationService } from '../../services/reservation.service';
 import { Reservation } from '../../models/reservation.model';
 
@@ -6,7 +7,9 @@ import { Reservation } from '../../models/reservation.model';
   selector: 'app-reservation-list',
   templateUrl: './reservation-list.component.html',
   styleUrls: ['./reservation-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,       
+  imports: [RouterLink]    
 })
 export class ReservationListComponent implements OnInit {
     
@@ -18,12 +21,8 @@ export class ReservationListComponent implements OnInit {
 
   readonly hasReservations = computed(() => this.reservations().length > 0);
 
-  constructor() { 
-    this.loadReservations();
-  }
-
   ngOnInit(): void {
-    this.loadReservations();
+    this.loadReservations();  
   }
 
   loadReservations(): void {

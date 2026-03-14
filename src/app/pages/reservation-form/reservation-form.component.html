@@ -1,0 +1,28 @@
+<form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" formControlName="customerName" required>
+  </div>
+
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" id="date" formControlName="date" required>
+  </div>
+
+  <div>
+    <label for="time">Time:</label>
+    <input type="time" id="time" formControlName="time" required>
+  </div>
+
+  <div>
+    <label for="service">Service:</label>
+    <select id="service" formControlName="service" required>
+      <option value="">Select a service</option>
+      <option *ngFor="let service of services" [value]="service">{{ service }}</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!reservationForm.valid">Create Reservation</button>
+</form>
+
+<app-toast [message]="toastMessage()" [visible]="showToast()"></app-toast>

@@ -1,26 +1,120 @@
-table {
+.reservation-page {
+  min-height: 100vh;
+  background: #0a1628;
+  padding: 2rem 2.5rem;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #e2ecff;
+  letter-spacing: -0.3px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Botón crear */
+.btn-crear {
+  background: #1D9E75;
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+.btn-crear:hover { background: #0F6E56; }
+
+/* Tabla */
+.reservations {
   width: 100%;
   border-collapse: collapse;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  font-size: 14px;
 }
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
+.reservations thead tr { background: rgba(255,255,255,0.05); }
+.reservations th {
+  padding: 12px 18px;
   text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  color: #4e6a8e;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+}
+.reservations td {
+  padding: 14px 18px;
+  color: #c8d8f0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+}
+.reservations tbody tr:last-child td { border-bottom: none; }
+.reservations tbody tr:hover { background: rgba(255,255,255,0.04); }
+
+/* Estado y botón cancelar */
+.status-cancelled {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #E0845A;
+  font-size: 12px;
+  font-weight: 500;
+}
+button.cancel {
+  background: transparent;
+  border: 0.5px solid rgba(255,255,255,0.15);
+  color: #6b82a8;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+button.cancel:hover:not(:disabled) {
+  background: rgba(216,90,48,0.12);
+  border-color: #D85A30;
+  color: #E0845A;
+}
+button.cancel:disabled { opacity: 0.35; cursor: not-allowed; }
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-th {
-  background-color: #f2f2f2;
-}
-
-button {
-  background-color: #f44336;
+.btn-create {
+  background-color: #4f46e5;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 0.95rem;
 }
 
-button:hover {
-  background-color: #d32f2f;
+.btn-create:hover {
+  background-color: #4338ca;
 }
