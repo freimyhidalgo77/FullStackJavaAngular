@@ -20,15 +20,15 @@
   }
 
   @if(hasReservations()) {
-    <table class="reservations">
+    <table class="reservations" role="table" aria-label="Lista de reservas">
       <thead>
         <tr>
-          <th>Cliente</th>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Servicio</th>
-          <th>Estado</th>
-          <th>Acciones</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Hora</th>
+          <th scope="col">Servicio</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -45,6 +45,7 @@
                 class="cancel"
                 (click)="cancelReservation(reservation)"
                 [disabled]="reservation.status == 'CANCELLED'"
+                [attr.aria-label]="'Cancelar reserva para ' + reservation.customerName"
               >
                 Cancelar
               </button>

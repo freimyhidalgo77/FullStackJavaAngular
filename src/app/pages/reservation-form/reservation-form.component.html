@@ -1,28 +1,34 @@
 <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="customerName">Customer Name:</label>
+    <label for="customerName">Nombre del Cliente:</label>
     <input type="text" id="customerName" formControlName="customerName" required>
+    @if(reservationForm.get('customerName')?.invalid && reservationForm.get('customerName')?.touched) {
+      <span class="error-message">El nombre del cliente es obligatorio.</span>
+    }
   </div>
 
   <div>
-    <label for="date">Date:</label>
+    <label for="date">Fecha:</label>
     <input type="date" id="date" formControlName="date" required>
   </div>
 
   <div>
-    <label for="time">Time:</label>
+    <label for="time">Hora:</label>
     <input type="time" id="time" formControlName="time" required>
   </div>
 
   <div>
-    <label for="service">Service:</label>
+    <label for="service">Servicio:</label>
     <select id="service" formControlName="service" required>
-      <option value="">Select a service</option>
+      <option value="">Seleccionar un servicio</option>
       <option *ngFor="let service of services" [value]="service">{{ service }}</option>
     </select>
+    @if (reservationForm.get('service')?.invalid && reservationForm.get('service')?.touched) {
+      <span class="error-message">Por favor, seleccione un servicio.</span>
+    }
   </div>
 
-  <button type="submit" [disabled]="!reservationForm.valid">Create Reservation</button>
+  <button type="submit" [disabled]="reservationForm.invalid || isSubmitting()">Crear reserva</button>
 </form>
 
 <app-toast [message]="toastMessage()" [visible]="showToast()"></app-toast>
