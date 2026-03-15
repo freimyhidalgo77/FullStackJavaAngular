@@ -48,11 +48,13 @@ export class ReservationFormComponent {
           // Success, maybe reset form or navigate
           this.reservationForm.reset();
         },
-        error: (error) => {
-          this.toastMessage.set('Error saving reservation: ' + error.message);
-          this.showToast.set(true);
-          setTimeout(() => this.showToast.set(false), 3000);
-        }
+   error: (error) => {
+  // El backend retorna { message: "Ya existe una reserva..." } en el body
+  const errorMessage = error.error?.message || 'Error al guardar la reserva';
+  this.toastMessage.set(errorMessage);
+  this.showToast.set(true);
+  setTimeout(() => this.showToast.set(false), 3000);
+}
       });
     }
   }
