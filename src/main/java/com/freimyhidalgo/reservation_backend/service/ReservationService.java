@@ -42,9 +42,9 @@ public class ReservationService {
      */
     @Transactional
     public Reservation createReservation(Reservation reservation) {
-        Objects.requireNonNull(reservation, "reservation must not be null");
+        Objects.requireNonNull(reservation, "La reserva no puede ser nula");
         if (reservationRepository.existsByDateAndTime(reservation.getDate(), reservation.getTime())) {
-            throw new ReservationAlreadyExistsException("A reservation already exists for the specified date and time.");
+            throw new ReservationAlreadyExistsException("Ya existe una reserva para la fecha y hora especificadas.");
         }
 
         reservation.setStatus(ReservationStatus.ACTIVE);
@@ -59,7 +59,7 @@ public class ReservationService {
      */
     public void cancelReservation(Long id) {
         Reservation reservation = reservationRepository.findById(id)
-                .orElseThrow(() -> new ReservationNotFoundException("Reservation not found with ID: " + id));
+                .orElseThrow(() -> new ReservationNotFoundException("Reserva no encontrada con ID: " + id));
         reservation.setStatus(ReservationStatus.CANCELED);
         reservationRepository.save(reservation);
     }
