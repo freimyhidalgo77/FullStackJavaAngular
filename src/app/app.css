@@ -6,33 +6,36 @@
   padding: 0;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   width: 100%;
+  margin: 0 !important;      /* ← agrega !important */
+  padding: 0 !important;     /* ← agrega !important */
   background: #0a1628;
   color: #e2ecff;
   font-family: 'DM Sans', system-ui, sans-serif;
   overflow-x: hidden;
 }
 
-/* El root de Angular también debe cubrir todo */
 app-root {
-  display: flex;
-  flex-direction: column;
+  display: block;        
   width: 100%;
-  height: 100%;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
   background: #0a1628;
+
 }
 
+/* El header sin margen externo */
 .app-header {
   background: #0a1628;
   color: #e2ecff;
   text-align: center;
   padding: 1rem;
   font-family: 'DM Sans', sans-serif;
-  margin: 0;
+  margin: 0; /* ← sin margen */
+  width: 100%;
 }
 
 .app-header h1 {
@@ -40,3 +43,4 @@ app-root {
   font-weight: 500;
   margin: 0;
 }
+

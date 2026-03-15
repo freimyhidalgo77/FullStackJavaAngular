@@ -1,13 +1,15 @@
 .reservation-page {
   min-height: 100vh;
+  width: 100%;
   background: #0a1628;
   padding: 2rem 2.5rem;
   font-family: 'DM Sans', sans-serif;
   position: relative;
+  margin: 0; /* ← crítico */
+  box-sizing: border-box; /* ← para que padding no desborde */
 }
-
 .header {
-  display: flex;
+  display: block;  
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
